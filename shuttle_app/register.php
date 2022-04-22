@@ -13,11 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     $email = $_POST['email'];
     $pass = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
+    $C_time = time();
     $exists = false;
 
-    if($password == $confirm_password && $exists == false){
+    if($pass == $confirm_password && $exists == false){
 
-        $sql = "INSERT INTO `registrations` (`firstname`, `lastname`, `student_id`, `email_address`, `password`, `confirm_password`,`datetime`,) VALUES ('firstname', 'lastname', 'id', 'email', 'pass', 'confirm_password',current_timestamp())";
+        $sql = "INSERT INTO `registrations` (`firstname`, `lastname`, `student_id`, `email_address`, `password`, `confirm_password`,`datetime`) VALUES ('$firstname', '$lastname', '$id', '$email', '$pass', '$confirm_password',$C_time)";
+        
+        //echo $sql;
         
         $result = mysqli_query($connect,$sql);
 
